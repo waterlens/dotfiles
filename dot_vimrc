@@ -1,0 +1,35 @@
+vim9script
+
+set number
+set mouse=a
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set ignorecase
+set smartcase
+set smartindent
+set signcolumn=number
+filetype plugin indent on
+syntax on
+set noshowmode
+set laststatus=2
+
+inoremap jj <Esc>
+inoremap <C-v> <Esc>"+pa
+vnoremap <C-c> "+y
+vnoremap <C-x> "+d
+
+plug#begin('~/.vim/managed-plugins')
+  Plug 'itchyny/lightline.vim'
+  Plug 'joshdick/onedark.vim'
+  Plug 'luochen1990/rainbow'
+  Plug 'justinmk/vim-sneak'
+plug#end()
+
+g:rainbow_active = 1
+
+try
+  colorscheme onedark
+catch /E185/ 
+endtry
+
