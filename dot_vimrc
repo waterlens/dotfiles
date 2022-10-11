@@ -24,6 +24,8 @@ plug#begin('~/.vim/managed-plugins')
   Plug 'joshdick/onedark.vim'
   Plug 'luochen1990/rainbow'
   Plug 'justinmk/vim-sneak'
+  Plug 'tpope/vim-repeat'
+  Plug 'chaoren/vim-wordmotion'
 plug#end()
 
 g:rainbow_active = 1
