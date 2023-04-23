@@ -1,0 +1,9 @@
+[user]
+	email = waterlens@waterlens.moe
+	name = waterlens
+[core]
+	editor = vim
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
