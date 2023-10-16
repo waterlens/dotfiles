@@ -6,6 +6,12 @@ if false && grep -q -i microsoft /proc/version
   set -gx all_proxy http://{$WSL_HOST}:{$PROXY_PORT}
 end
 
+switch (uname)
+case Darwin
+  eval (/opt/homebrew/bin/brew shellenv)
+case '*'
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     fish_vi_key_bindings
