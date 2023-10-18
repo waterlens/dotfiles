@@ -2,7 +2,7 @@
 	email = waterlens@waterlens.moe
 	name = waterlens
 [core]
-	editor = vim
+	editor = nvim
 [pull]
 	ff = only
 [init]
