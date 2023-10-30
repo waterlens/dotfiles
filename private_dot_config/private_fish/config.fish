@@ -9,6 +9,7 @@ end
 switch (uname)
 case Darwin
   eval (/opt/homebrew/bin/brew shellenv)
+  set -gx SDKROOT (xcrun --show-sdk-path)  
 case '*'
 end
 
