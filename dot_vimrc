@@ -52,6 +52,11 @@ try
 catch
 endtry
 
+if exists('g:neovide')
+  set guifont=Hack\ Nerd\ Font,Hack:h16
+  set shell=fish
+endif
+
 if exists('g:vscode')
   set showmode
   let g:rainbow_active = 0
