@@ -14,6 +14,7 @@ set noshowmode
 set laststatus=2
 set clipboard=unnamedplus,unnamed
 set termguicolors
+set autoindent
 
 let g:mapleader = ','
 inoremap jj <Esc>
@@ -111,15 +112,14 @@ lua << EOF
   }
   
   require("mason").setup {
-  
   }
   
   require("mason-lspconfig").setup {
-  
   }
 
   require('which-key').setup {
   }
+
 
   -- Setup language servers.
   local lspconfig = require('lspconfig')
