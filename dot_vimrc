@@ -17,10 +17,11 @@ set termguicolors
 set autoindent
 
 let g:mapleader = ','
+let g:maplocalleader = ','
 inoremap jj <Esc>
 inoremap <Leader>c <C-x><C-o>
 
-function Update_treesitter(info)
+function! UpdateTreesitter(info)
   if has('nvim')
     TSUpdate
   endif
@@ -39,7 +40,7 @@ Plug 'eraserhd/parinfer-rust', {'do':'cargo build --release'}
 Plug 'kaarmu/typst.vim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': function('Update_treesitter')} 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': function('UpdateTreesitter')} 
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'echasnovski/mini.nvim'
 Plug 'williamboman/mason.nvim'
@@ -47,6 +48,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/which-key.nvim'
 Plug 'github/copilot.vim'
+Plug 'Olical/conjure'
 call plug#end()
 
 try
@@ -77,6 +79,11 @@ else
   endtry
   let g:rainbow_active = 1
 endif
+
+let g:conjure#filetypes = ['clojure', 'fennel', 'lisp', 'scheme']
+let g:conjure#client#scheme#stdio#command = 'chibi-scheme'
+let g:conjure#client#scheme#stdio#prompt_pattern = '> $?'
+let g:conjure#client#scheme#stdio#value_prefix_pattern = v:false
 
 if has('nvim')
   set completeopt-=preview
