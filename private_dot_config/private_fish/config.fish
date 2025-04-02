@@ -1,3 +1,10 @@
+alias gcb="git checkout -b"
+alias gfa="git fetch --all"
+alias gpl="git pull"
+alias gph="git push"
+alias ga="git add"
+alias gcm="git commit -m"
+
 if true
     if grep -s -q -i microsoft /proc/version
         set -gx proxy_port 7890
@@ -44,6 +51,9 @@ if type -q opam
 end
 if type -q rbenv
     source (rbenv init -|psub)
+end
+if type -q xmake
+    source ~/.xmake/profile
 end
 
 set -gx ZVM_INSTALL ~/.zvm/self
