@@ -8,7 +8,7 @@ alias gst="git status"
 alias gc="git checkout"
 alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
-if true
+if false
     if grep -s -q -i microsoft /proc/version
         set -gx proxy_port 7890
         set -gx proxy_host (cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)
@@ -36,6 +36,9 @@ switch (uname)
         end
         set -gx JAVA_HOME (/usr/libexec/java_home -v 17)
     case Linux
+        if type -q helix
+            alias hx=helix
+        end
 end
 
 set -gxp PATH ~/.local/bin
