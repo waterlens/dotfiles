@@ -4,6 +4,9 @@ alias gpl="git pull"
 alias gph="git push"
 alias ga="git add"
 alias gcm="git commit -m"
+alias gst="git status"
+alias gc="git checkout"
+alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 if true
     if grep -s -q -i microsoft /proc/version
@@ -27,6 +30,7 @@ switch (uname)
         set -gxp PATH ~/Library/Application\ Support/Coursier/bin
         # set -gxp PATH /opt/llvm/bin
         set -gxp PATH /opt/mpl/bin
+        set -gxp PATH /opt/tinycc/bin
         if type -q xcrun
             set -gx SDKROOT (xcrun --show-sdk-path)
         end
