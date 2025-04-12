@@ -30,7 +30,7 @@ if status is-interactive
     end
     if type -q zellij
         # Configure auto-attach/exit to your likings (default is off).
-        set ZELLIJ_AUTO_ATTACH true
+        set ZELLIJ_AUTO_ATTACH false
         set ZELLIJ_AUTO_EXIT true
         if not set -q ZELLIJ
             if test "$ZELLIJ_AUTO_ATTACH" = true
@@ -40,7 +40,7 @@ if status is-interactive
             end
 
             if test "$ZELLIJ_AUTO_EXIT" = true
-                exec sh -c exit
+                exec sh -c "exit $status"
             end
         end
     end
