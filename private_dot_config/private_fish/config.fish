@@ -18,9 +18,9 @@ set -gxp PATH ~/.ghcup/bin
 set -gxp PATH ~/.cargo/bin
 set -gxp PATH ~/.moon/bin
 set -gxp PATH ~/.rbenv/bin
-set -gx ZVM_INSTALL ~/.zvm/self
 set -gxp PATH ~/.zvm/bin
 set -gxp PATH ~/.zvm/self
+set -gx ZVM_INSTALL ~/.zvm/self
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
