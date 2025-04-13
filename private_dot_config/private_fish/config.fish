@@ -46,20 +46,20 @@ if status is-interactive
     end
 end
 
-alias gcb="git checkout -b"
-alias gfa="git fetch --all"
-alias gpl="git pull"
-alias gph="git push"
-alias ga="git add"
-alias gcm="git commit -m"
-alias gst="git status"
-alias gc="git checkout"
-alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+abbr -a gcb -- git checkout -b
+abbr -a gfa -- git fetch --all
+abbr -a gpl -- git pull
+abbr -a gph -- git push
+abbr -a ga -- git add
+abbr -a gcm -- git commit -m
+abbr -a gst -- git status
+abbr -a gc -- git checkout
+abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'" --all
 if type -q zellij
-    alias zj=zellij
+    abbr -a zj -- zellij
 end
 if type -q helix
-    alias hx=helix
+    abbr -a hx -- helix
 end
 if type -q hx
     set -gx EDITOR hx
@@ -106,3 +106,13 @@ function conda_init --description "Initialize conda"
     end
     # <<< conda initialize <<<
 end
+
+function last_history_item
+    echo $history[1]
+end
+function last_history_token
+    echo $history[1] | read -t -a tokens
+    echo $tokens[-1]
+end
+abbr -a !! --position anywhere --function last_history_item
+abbr -a !, --position anywhere --function last_history_token
