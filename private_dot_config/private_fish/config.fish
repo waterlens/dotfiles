@@ -59,6 +59,7 @@ if type -q zellij
     abbr -a zj -- zellij
 end
 if type -q helix
+    set -gx EDITOR helix
     abbr -a hx -- helix
 end
 if type -q hx
