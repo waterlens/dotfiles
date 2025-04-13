@@ -61,6 +61,9 @@ end
 if type -q helix
     alias hx=helix
 end
+if type -q hx
+    set -gx EDITOR hx
+end
 
 if true
     if grep -s -q -i microsoft /proc/version
@@ -94,9 +97,12 @@ if type -q xmake
     source ~/.xmake/profile
 end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/homebrew/Caskroom/miniforge/base/bin/conda
-    eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" hook $argv | source
+# You are so slow !!!
+function conda_init --description "Initialize conda"
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    if test -f conda
+        eval conda "shell.fish" hook $argv | source
+    end
+    # <<< conda initialize <<<
 end
-# <<< conda initialize <<<
