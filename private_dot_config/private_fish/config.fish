@@ -28,19 +28,21 @@ if status is-interactive
     if type -q atuin
         atuin init fish | source
     end
-    if type -q zellij
-        # Configure auto-attach/exit to your likings (default is off).
-        set ZELLIJ_AUTO_ATTACH false
-        set ZELLIJ_AUTO_EXIT true
-        if not set -q ZELLIJ
-            if test "$ZELLIJ_AUTO_ATTACH" = true
-                zellij attach -c
-            else
-                zellij
-            end
+    if test "$TERM_PROGRAM" != vscode
+        if type -q zellij
+            # Configure auto-attach/exit to your likings (default is off).
+            set ZELLIJ_AUTO_ATTACH false
+            set ZELLIJ_AUTO_EXIT true
+            if not set -q ZELLIJ
+                if test "$ZELLIJ_AUTO_ATTACH" = true
+                    zellij attach -c
+                else
+                    zellij
+                end
 
-            if test "$ZELLIJ_AUTO_EXIT" = true
-                exec sh -c "exit $status"
+                if test "$ZELLIJ_AUTO_EXIT" = true
+                    exec sh -c "exit $status"
+                end
             end
         end
     end
