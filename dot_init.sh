@@ -85,6 +85,22 @@ init_debian() {
     chsh -s /usr/bin/fish
 }
 
+init_ssh() {
+    echo "Do you want to add your SSH public key to the authorized_keys file? (y/n)"
+    REPLY=; read REPLY
+    case "$REPLY" in
+        [Yy]*) 
+            mkdir -p ~/.ssh
+            curl https://github.com/waterlens.keys >> ~/.ssh/authorized_keys
+            chmod 600 ~/.ssh/authorized_keys
+            chmod 700 ~/.ssh
+            ;;
+        *)
+            echo "Skipping SSH key addition"
+            ;;
+    esac
+}
+
 case "$ID" in
     "darwin")
         echo "macOS detected"
@@ -106,3 +122,5 @@ case "$ID" in
         echo "Unsupported OS ($ID) detected"
         ;;
 esac
+
+init_ssh
