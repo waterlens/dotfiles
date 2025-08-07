@@ -22,6 +22,10 @@ set -gxp PATH ~/.zvm/bin
 set -gxp PATH ~/.zvm/self
 set -gx ZVM_INSTALL ~/.zvm/self
 
+# CUDA
+set -gxp PATH /usr/local/cuda/bin
+set -gxp LD_LIBRARY_PATH /usr/local/cuda/lib
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     fish_vi_key_bindings
@@ -68,7 +72,7 @@ if type -q hx
     set -gx EDITOR hx
 end
 
-if true
+if false
     if grep -s -q -i microsoft /proc/version
         set -gx proxy_port 7890
         set -gx proxy_host (cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)
@@ -119,3 +123,7 @@ function last_history_token
 end
 abbr -a !! --position anywhere --function last_history_item
 abbr -a !, --position anywhere --function last_history_token
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/waterlens/.lmstudio/bin
+# End of LM Studio CLI section
