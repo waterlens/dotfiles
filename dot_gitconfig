@@ -2,8 +2,14 @@
 	email = waterlens@waterlens.moe
 	name = waterlens
 [core]
-	editor = nvim
+	editor = hx
+	excludesFile = ~/.gitignore
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
