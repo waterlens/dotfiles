@@ -60,11 +60,44 @@ if type -q xmake
     source ~/.xmake/profile
 end
 
+### Add abbreviations
+
+abbr -a gcb -- git checkout -b
+abbr -a gfa -- git fetch --all
+abbr -a gpl -- git pull
+abbr -a gph -- git push
+abbr -a ga -- git add
+abbr -a gcm -- git commit -m
+abbr -a gst -- git status
+abbr -a gc -- git checkout
+abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'" --all
+abbr -a gcl -- git clone
+abbr -a gd -- git diff
 if type -q helix
     set -gx EDITOR helix
+    abbr -a hx -- helix
 else if type -q hx
     set -gx EDITOR hx
 end
+if type -q zellij
+    abbr -a zj -- zellij
+end
+
+function last_history_item
+    echo $history[1]
+end
+function last_history_token
+    echo $history[1] | read -t -a tokens
+    echo $tokens[-1]
+end
+function last_history_prefix
+    echo $history[1] | read -t -a tokens
+    echo $tokens[1..-2]
+end
+
+abbr -a !! --position anywhere --function last_history_item
+abbr -a !, --position anywhere --function last_history_token
+abbr -a !. --position anywhere --function last_history_prefix
 
 ### Set up tools in interactive shell mode
 
@@ -94,33 +127,6 @@ if status is-interactive
         end
     end
 end
-
-### Add abbreviations
-
-abbr -a gcb -- git checkout -b
-abbr -a gfa -- git fetch --all
-abbr -a gpl -- git pull
-abbr -a gph -- git push
-abbr -a ga -- git add
-abbr -a gcm -- git commit -m
-abbr -a gst -- git status
-abbr -a gc -- git checkout
-abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'" --all
-abbr -a gcl -- git clone
-abbr -a gd -- git diff
-abbr -a zj -- zellij
-abbr -a hx -- helix
-
-function last_history_item
-    echo $history[1]
-end
-function last_history_token
-    echo $history[1] | read -t -a tokens
-    echo $tokens[-1]
-end
-
-abbr -a !! --position anywhere --function last_history_item
-abbr -a !, --position anywhere --function last_history_token
 
 ### Set up proxy
 
