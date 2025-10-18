@@ -60,7 +60,7 @@ if type -q xmake
     source ~/.xmake/profile
 end
 
-### Add abbreviations
+### Add abbreviations and aliases
 
 abbr -a gcb -- git checkout -b
 abbr -a gfa -- git fetch --all
@@ -83,21 +83,29 @@ if type -q zellij
     abbr -a zj -- zellij
 end
 
-function last_history_item
+function __last_history_item
     echo $history[1]
 end
-function last_history_token
+function __last_history_token
     echo $history[1] | read -t -a tokens
     echo $tokens[-1]
 end
-function last_history_prefix
+function __last_history_prefix
     echo $history[1] | read -t -a tokens
     echo $tokens[1..-2]
 end
 
-abbr -a !! --position anywhere --function last_history_item
-abbr -a !, --position anywhere --function last_history_token
-abbr -a !. --position anywhere --function last_history_prefix
+abbr -a !! --position anywhere --function __last_history_item
+abbr -a !. --position anywhere --function __last_history_token
+abbr -a !, --position anywhere --function __last_history_prefix
+
+for __index in (seq 1 9)
+    function __last_history_token_at_$__index --inherit-variable __index
+        echo $history[1] | read -l -t -a tokens
+        echo $tokens[$__index]
+    end
+    abbr -a !$__index --position anywhere --function __last_history_token_at_$__index
+end
 
 ### Set up tools in interactive shell mode
 
