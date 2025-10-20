@@ -154,9 +154,9 @@ function setup_proxy --description "Sets up proxy environment variables based on
     end
 
     if set -q proxy_host[1]
-        set -gx http_proxy "http://{$proxy_host}:{$proxy_port}"
-        set -gx https_proxy "http://{$proxy_host}:{$proxy_port}"
-        set -gx all_proxy "http://{$proxy_host}:{$proxy_port}"
+        set -gx http_proxy "http://$proxy_host:$proxy_port"
+        set -gx https_proxy "http://$proxy_host:$proxy_port"
+        set -gx all_proxy "http://$proxy_host:$proxy_port"
         set -gx no_proxy "127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,172.29.0.0/16,localhost,*.local,*.crashlytics.com,<local>"
     end
 end
