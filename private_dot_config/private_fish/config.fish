@@ -68,6 +68,8 @@ abbr -a gpl -- git pull
 abbr -a gph -- git push
 abbr -a ga -- git add
 abbr -a gcm -- git commit -m
+abbr -a gca -- git commit --amend
+abbr -a gcam -- git commit --amend -m
 abbr -a gst -- git status
 abbr -a gc -- git checkout
 abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'" --all
