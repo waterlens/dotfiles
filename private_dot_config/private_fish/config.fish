@@ -142,18 +142,7 @@ end
 
 function setup_proxy --description "Sets up proxy environment variables based on the OS"
     set -l proxy_port 7897 # Use a local variable for the port
-
-    switch (uname)
-        case Darwin
-            set -g proxy_host localhost
-        case Linux
-            if grep -s -q -i microsoft /proc/version
-                # WSL: get host IP from /etc/resolv.conf
-                set -g proxy_host (cat /etc/resolv.conf | grep nameserver | cut -d ' ' -f 2)
-            else
-                set -g proxy_host localhost
-            end
-    end
+    set -g proxy_host localhost
 
     if set -q proxy_host[1]
         set -gx http_proxy "http://$proxy_host:$proxy_port"
