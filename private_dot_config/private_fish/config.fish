@@ -113,7 +113,8 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fish_vi_key_bindings
+    set --global fish_key_bindings fish_vi_key_bindings
+    fish_config theme choose waterlens
     if type -q atuin
         atuin init fish | source
     end
