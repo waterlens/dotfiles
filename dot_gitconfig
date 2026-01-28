@@ -2,7 +2,7 @@
 	email = waterlens@waterlens.moe
 	name = waterlens
 [core]
-	editor = hx
+	editor = nvim
 	excludesFile = ~/.gitignore
 [pull]
 	ff = only

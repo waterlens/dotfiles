@@ -75,7 +75,9 @@ abbr -a gc -- git checkout
 abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'" --all
 abbr -a gcl -- git clone
 abbr -a gd -- git diff
-if type -q helix
+if type -q nvim
+    set -gx EDITOR vim
+else if type -q helix
     set -gx EDITOR helix
     abbr -a hx -- helix
 else if type -q hx
