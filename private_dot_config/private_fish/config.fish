@@ -76,7 +76,7 @@ abbr -a glg -- git log --graph --abbrev-commit --decorate --format="format:'%C(b
 abbr -a gcl -- git clone
 abbr -a gd -- git diff
 if type -q nvim
-    set -gx EDITOR vim
+    set -gx EDITOR nvim
 else if type -q helix
     set -gx EDITOR helix
     abbr -a hx -- helix
