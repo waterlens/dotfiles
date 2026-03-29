@@ -28,6 +28,7 @@ switch (uname)
             set -gx SDKROOT (xcrun --show-sdk-path)
         end
         set -gx JAVA_HOME (/usr/libexec/java_home -v 17)
+        abbr -a cp -- cp -c
     case '*'
 end
 
@@ -91,11 +92,11 @@ function __last_history_item
     echo $history[1]
 end
 function __last_history_token
-    echo $history[1] | read -t -a tokens
+    echo $history[1] | read --tokenize-raw -a tokens
     echo $tokens[-1]
 end
 function __last_history_prefix
-    echo $history[1] | read -t -a tokens
+    echo $history[1] | read --tokenize-raw -a tokens
     echo $tokens[1..-2]
 end
 
@@ -105,7 +106,7 @@ abbr -a !, --position anywhere --function __last_history_prefix
 
 for __index in (seq 1 9)
     function __last_history_token_at_$__index --inherit-variable __index
-        echo $history[1] | read -l -t -a tokens
+        echo $history[1] | read -l --tokenize-raw -a tokens
         echo $tokens[$__index]
     end
     abbr -a !$__index --position anywhere --function __last_history_token_at_$__index
