@@ -24,6 +24,7 @@ switch (uname)
         set -gxp PATH /opt/llvm/bin
         set -gxp PATH /opt/mpl/bin
         set -gxp PATH /opt/tinycc/bin
+        set -gxp PATH /opt/homebrew/opt/gpatch/libexec/gnubin
         if type -q xcrun
             set -gx SDKROOT (xcrun --show-sdk-path)
         end
@@ -87,6 +88,9 @@ end
 if type -q zellij
     abbr -a zj -- zellij
 end
+abbr -a codex -- proxy.fish codex
+abbr -a claude -- proxy.fish claude
+abbr -a gemini -- proxy.fish gemini
 
 function __last_history_item
     echo $history[1]
