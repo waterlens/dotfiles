@@ -160,7 +160,7 @@ function setup_proxy --description "Sets up proxy environment variables based on
     end
 end
 
-setup_proxy
+# setup_proxy
 
 ### Misc
 
